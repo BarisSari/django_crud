@@ -11,8 +11,6 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     last_update = models.DateTimeField(auto_now_add=True)
-    # actor_id = models.ForeignKey(FilmActor, on_delete=models.CASCADE,
-    #                              related_name='actor_id_test')
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -33,6 +31,5 @@ class FilmActor(models.Model):
 
     actor_id = models.ForeignKey(Actor, on_delete=models.CASCADE,
                                  db_column='actor_id')
-    # actor_id = models.SmallIntegerField()
     film_id = models.SmallIntegerField()
     last_update = models.DateTimeField(auto_now_add=True)

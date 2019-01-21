@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from test_app.models import Actor, ActorForm
+from test_app.models import Actor, ActorForm, FilmActor
 
 
 def actor_list(request, template_name='test_app/actor_list.html'):
@@ -38,3 +38,16 @@ def actor_delete(request, pk,
         actor.delete()
         return redirect('actor_list')
     return render(request, template_name, {'object': actor})
+
+
+def film_actor_list(request, template_name='test_app/film_actor_list.html'):
+    """Film actor list - test
+
+    :param request: HTTP Request
+    :param template_name: html file
+    :return: returns the result of the HTTP
+    """
+    film_actor = FilmActor.objects.all()
+    data = {'object_list': film_actor}
+
+    return render(request, template_name, data)
