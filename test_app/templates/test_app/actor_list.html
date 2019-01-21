@@ -12,13 +12,13 @@
 <tbody>
     {% for actor in object_list %}
     <tr>
-    <td>{{ actor.id }}</td>
+    <td>{{ actor.actor_id }}</td>
     <td>{{ actor.first_name }}</td>
     <td>{{ actor.last_name }}</td>
     <td>{{ actor.last_update }}</td>
-    <td><a href="{% url "actor_view" actor.id %}">view</a></td>
-    <td><a href="{% url "actor_edit" actor.id %}">edit</a></td>
-    <td><a href="{% url "actor_delete" actor.id %}">delete</a></td>
+    <td><a href="{% url "actor_view" actor.actor_id %}">view</a></td>
+    <td><a href="{% url "actor_edit" actor.actor_id %}">edit</a></td>
+    <td><a href="{% url "actor_delete" actor.actor_id %}">delete</a></td>
     </tr>
     {% endfor %}
 </tbody>
