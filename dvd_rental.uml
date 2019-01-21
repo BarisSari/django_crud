@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>3998d5b6-509c-4604-b0e1-87c632fc12d8</OriginalElement>
+  <nodes>
+    <node x="1149.5" y="440.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.actor</node>
+    <node x="243.0" y="1553.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.staff_list</node>
+    <node x="13.0" y="1118.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.store</node>
+    <node x="859.5" y="810.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.inventory</node>
+    <node x="975.0" y="1553.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.sales_by_film_category</node>
+    <node x="569.5" y="452.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.category</node>
+    <node x="387.5" y="738.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.customer</node>
+    <node x="144.35185185185185" y="0.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.country</node>
+    <node x="623.5" y="822.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_category</node>
+    <node x="1649.5" y="0.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.nicer_but_slower_film_list</node>
+    <node x="859.5" y="166.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.language</node>
+    <node x="334.86574074074076" y="1332.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.payment</node>
+    <node x="0.0" y="1553.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.film_list</node>
+    <node x="628.0509259259259" y="1082.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.rental</node>
+    <node x="144.35185185185185" y="154.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.city</node>
+    <node x="1410.5" y="0.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.customer_list</node>
+    <node x="151.5" y="726.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.staff</node>
+    <node x="482.0" y="1553.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.actor_info</node>
+    <node x="738.0" y="1553.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.VIEW:postgres.public.sales_by_store</node>
+    <node x="831.0" y="332.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film</node>
+    <node x="141.35185185185185" y="392.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.address</node>
+    <node x="1095.5" y="822.0">3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_actor</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.address" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.city">
+      <point x="0.0" y="-112.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.staff" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.address">
+      <point x="0.0" y="-148.0" />
+      <point x="259.5" y="701.0" />
+      <point x="252.35185185185185" y="701.0" />
+      <point x="0.0" y="112.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.language">
+      <point x="0.0" y="-172.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.rental" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.inventory">
+      <point x="72.33333333333337" y="-100.0" />
+      <point x="808.8842592592592" y="1062.0" />
+      <point x="967.5" y="1062.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.payment" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.rental">
+      <point x="77.99999999999989" y="-88.0" />
+      <point x="529.8657407407406" y="1307.0" />
+      <point x="736.5509259259259" y="1307.0" />
+      <point x="0.0" y="100.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.inventory" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film">
+      <point x="0.0" y="-64.0" />
+      <point x="0.0" y="172.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_category" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film">
+      <point x="54.0" y="-52.0" />
+      <point x="785.5" y="701.0" />
+      <point x="876.5" y="701.0" />
+      <point x="-91.0" y="172.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.store" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.staff">
+      <point x="59.0" y="-64.0" />
+      <point x="190.0" y="1062.0" />
+      <point x="187.5" y="1062.0" />
+      <point x="-72.0" y="148.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.rental" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.customer">
+      <point x="0.0" y="-100.0" />
+      <point x="736.5509259259259" y="1042.0" />
+      <point x="549.5" y="1042.0" />
+      <point x="54.0" y="136.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_actor" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.actor">
+      <point x="54.0" y="-52.0" />
+      <point x="0.0" y="64.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_category" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.category">
+      <point x="-54.0" y="-52.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.store" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.address">
+      <point x="-59.0" y="-64.0" />
+      <point x="72.0" y="701.0" />
+      <point x="178.35185185185185" y="701.0" />
+      <point x="-74.0" y="112.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.city" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.country">
+      <point x="0.0" y="-64.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.rental" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.staff">
+      <point x="-72.33333333333337" y="-100.0" />
+      <point x="664.2175925925925" y="1052.0" />
+      <point x="331.5" y="1052.0" />
+      <point x="72.0" y="148.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.customer" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.address">
+      <point x="0.0" y="-136.0" />
+      <point x="495.5" y="701.0" />
+      <point x="326.35185185185185" y="701.0" />
+      <point x="74.0" y="112.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.payment" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.customer">
+      <point x="-1.1368683772161603E-13" y="-88.0" />
+      <point x="451.86574074074065" y="1307.0" />
+      <point x="436.0" y="1307.0" />
+      <point x="436.0" y="1062.0" />
+      <point x="441.5" y="1062.0" />
+      <point x="-54.0" y="136.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film_actor" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.film">
+      <point x="-54.0" y="-52.0" />
+      <point x="1149.5" y="701.0" />
+      <point x="1058.5" y="701.0" />
+      <point x="91.0" y="172.0" />
+    </edge>
+    <edge source="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.payment" target="3998d5b6-509c-4604-b0e1-87c632fc12d8.TABLE:postgres.public.staff">
+      <point x="-78.00000000000011" y="-88.0" />
+      <point x="373.86574074074065" y="1307.0" />
+      <point x="259.5" y="1307.0" />
+      <point x="0.0" y="148.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.02624867162593" x="886.2131096613854" y="1257.7060163611886" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
