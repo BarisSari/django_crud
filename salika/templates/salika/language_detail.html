@@ -1,0 +1,14 @@
+{% extends "salika/language_base.html" %}
+
+{% block title %}
+    {{ language }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:language_list" %}>Language</a></h1>
+    <h2>{{ language }} | <a href={% url "salika:language_update" language.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:language_delete" language.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ language }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

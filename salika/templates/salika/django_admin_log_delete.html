@@ -1,0 +1,17 @@
+{% extends "salika/django_admin_log_base.html" %}
+
+{% block title %}
+    Delete {{ django_admin_log }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ django_admin_log }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ django_admin_log }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:django_admin_log_detail" django_admin_log.pk %}>Cancel</a>
+
+{% endblock %}

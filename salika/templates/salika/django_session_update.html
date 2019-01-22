@@ -1,0 +1,19 @@
+{% extends "salika/django_session_base.html" %}
+
+{% block title %}
+    Update {{ django_session }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:django_session_list" %}>DjangoSession</a></h1>
+<h2>Update {{ django_session }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+<a href={% url "salika:django_session_detail" django_session.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "salika:django_session_delete" django_session.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ django_session }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

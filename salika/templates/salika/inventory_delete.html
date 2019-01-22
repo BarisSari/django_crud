@@ -1,0 +1,17 @@
+{% extends "salika/inventory_base.html" %}
+
+{% block title %}
+    Delete {{ inventory }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ inventory }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ inventory }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:inventory_detail" inventory.pk %}>Cancel</a>
+
+{% endblock %}

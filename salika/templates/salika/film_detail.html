@@ -1,0 +1,14 @@
+{% extends "salika/film_base.html" %}
+
+{% block title %}
+    {{ film }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:film_list" %}>Film</a></h1>
+    <h2>{{ film }} | <a href={% url "salika:film_update" film.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:film_delete" film.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ film }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

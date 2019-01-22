@@ -1,0 +1,14 @@
+{% extends "salika/rental_base.html" %}
+
+{% block title %}
+    {{ rental }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:rental_list" %}>Rental</a></h1>
+    <h2>{{ rental }} | <a href={% url "salika:rental_update" rental.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:rental_delete" rental.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ rental }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

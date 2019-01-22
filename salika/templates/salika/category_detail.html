@@ -1,0 +1,14 @@
+{% extends "salika/category_base.html" %}
+
+{% block title %}
+    {{ category }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:category_list" %}>Category</a></h1>
+    <h2>{{ category }} | <a href={% url "salika:category_update" category.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:category_delete" category.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ category }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

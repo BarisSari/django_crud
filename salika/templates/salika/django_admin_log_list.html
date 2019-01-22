@@ -1,0 +1,20 @@
+{% extends "salika/django_admin_log_base.html" %}
+
+{% block title %}
+    DjangoAdminLogs
+{% endblock %}
+
+{% block content %}
+    <h1>DjangoAdminLogs</h1>
+    <h2><a href={% url "salika:django_admin_log_create" %}>Create new DjangoAdminLog</a></h2>
+    <ul>
+    {% for django_admin_log in django_admin_log_list %}
+        <li><a href={% url "salika:django_admin_log_detail" django_admin_log.pk %}>{{ django_admin_log }}</a> | <a href={% url "salika:django_admin_log_update" django_admin_log.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:django_admin_log_delete" django_admin_log.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ django_admin_log }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No DjangoAdminLogs yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

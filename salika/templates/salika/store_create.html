@@ -1,0 +1,16 @@
+{% extends "salika/store_base.html" %}
+
+{% block title %}
+    Create Store
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:store_list" %}>Store</a></h1>
+<h2>Create Store</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:store_list" %}>Cancel</a>
+{% endblock %}

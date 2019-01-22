@@ -1,0 +1,16 @@
+{% extends "salika/django_admin_log_base.html" %}
+
+{% block title %}
+    Create DjangoAdminLog
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:django_admin_log_list" %}>DjangoAdminLog</a></h1>
+<h2>Create DjangoAdminLog</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:django_admin_log_list" %}>Cancel</a>
+{% endblock %}

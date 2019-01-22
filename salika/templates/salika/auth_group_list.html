@@ -1,0 +1,20 @@
+{% extends "salika/auth_group_base.html" %}
+
+{% block title %}
+    AuthGroups
+{% endblock %}
+
+{% block content %}
+    <h1>AuthGroups</h1>
+    <h2><a href={% url "salika:auth_group_create" %}>Create new AuthGroup</a></h2>
+    <ul>
+    {% for auth_group in auth_group_list %}
+        <li><a href={% url "salika:auth_group_detail" auth_group.pk %}>{{ auth_group }}</a> | <a href={% url "salika:auth_group_update" auth_group.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:auth_group_delete" auth_group.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ auth_group }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No AuthGroups yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

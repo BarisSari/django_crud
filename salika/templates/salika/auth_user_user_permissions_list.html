@@ -1,0 +1,20 @@
+{% extends "salika/auth_user_user_permissions_base.html" %}
+
+{% block title %}
+    AuthUserUserPermissionss
+{% endblock %}
+
+{% block content %}
+    <h1>AuthUserUserPermissionss</h1>
+    <h2><a href={% url "salika:auth_user_user_permissions_create" %}>Create new AuthUserUserPermissions</a></h2>
+    <ul>
+    {% for auth_user_user_permissions in auth_user_user_permissions_list %}
+        <li><a href={% url "salika:auth_user_user_permissions_detail" auth_user_user_permissions.pk %}>{{ auth_user_user_permissions }}</a> | <a href={% url "salika:auth_user_user_permissions_update" auth_user_user_permissions.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:auth_user_user_permissions_delete" auth_user_user_permissions.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ auth_user_user_permissions }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No AuthUserUserPermissionss yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

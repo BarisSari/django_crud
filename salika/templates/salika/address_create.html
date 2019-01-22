@@ -1,0 +1,16 @@
+{% extends "salika/address_base.html" %}
+
+{% block title %}
+    Create Address
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:address_list" %}>Address</a></h1>
+<h2>Create Address</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:address_list" %}>Cancel</a>
+{% endblock %}

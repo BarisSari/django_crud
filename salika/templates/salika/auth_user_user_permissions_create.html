@@ -1,0 +1,16 @@
+{% extends "salika/auth_user_user_permissions_base.html" %}
+
+{% block title %}
+    Create AuthUserUserPermissions
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:auth_user_user_permissions_list" %}>AuthUserUserPermissions</a></h1>
+<h2>Create AuthUserUserPermissions</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:auth_user_user_permissions_list" %}>Cancel</a>
+{% endblock %}

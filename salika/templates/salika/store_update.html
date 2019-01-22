@@ -1,0 +1,19 @@
+{% extends "salika/store_base.html" %}
+
+{% block title %}
+    Update {{ store }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:store_list" %}>Store</a></h1>
+<h2>Update {{ store }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+<a href={% url "salika:store_detail" store.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "salika:store_delete" store.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ store }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

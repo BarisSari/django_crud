@@ -1,0 +1,14 @@
+{% extends "salika/django_migrations_base.html" %}
+
+{% block title %}
+    {{ django_migrations }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:django_migrations_list" %}>DjangoMigrations</a></h1>
+    <h2>{{ django_migrations }} | <a href={% url "salika:django_migrations_update" django_migrations.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:django_migrations_delete" django_migrations.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ django_migrations }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "salika/auth_group_base.html" %}
+
+{% block title %}
+    Delete {{ auth_group }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ auth_group }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ auth_group }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:auth_group_detail" auth_group.pk %}>Cancel</a>
+
+{% endblock %}

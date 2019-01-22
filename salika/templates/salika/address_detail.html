@@ -1,0 +1,14 @@
+{% extends "salika/address_base.html" %}
+
+{% block title %}
+    {{ address }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:address_list" %}>Address</a></h1>
+    <h2>{{ address }} | <a href={% url "salika:address_update" address.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:address_delete" address.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ address }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

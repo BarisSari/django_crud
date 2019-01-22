@@ -1,0 +1,19 @@
+{% extends "salika/auth_user_groups_base.html" %}
+
+{% block title %}
+    Update {{ auth_user_groups }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:auth_user_groups_list" %}>AuthUserGroups</a></h1>
+<h2>Update {{ auth_user_groups }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+<a href={% url "salika:auth_user_groups_detail" auth_user_groups.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "salika:auth_user_groups_delete" auth_user_groups.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ auth_user_groups }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

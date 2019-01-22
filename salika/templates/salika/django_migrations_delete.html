@@ -1,0 +1,17 @@
+{% extends "salika/django_migrations_base.html" %}
+
+{% block title %}
+    Delete {{ django_migrations }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ django_migrations }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ django_migrations }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:django_migrations_detail" django_migrations.pk %}>Cancel</a>
+
+{% endblock %}

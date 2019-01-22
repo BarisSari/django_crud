@@ -1,0 +1,14 @@
+{% extends "salika/customer_base.html" %}
+
+{% block title %}
+    {{ customer }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:customer_list" %}>Customer</a></h1>
+    <h2>{{ customer }} | <a href={% url "salika:customer_update" customer.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:customer_delete" customer.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ customer }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

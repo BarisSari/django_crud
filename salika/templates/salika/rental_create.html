@@ -1,0 +1,16 @@
+{% extends "salika/rental_base.html" %}
+
+{% block title %}
+    Create Rental
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:rental_list" %}>Rental</a></h1>
+<h2>Create Rental</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:rental_list" %}>Cancel</a>
+{% endblock %}

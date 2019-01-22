@@ -1,0 +1,17 @@
+{% extends "salika/country_base.html" %}
+
+{% block title %}
+    Delete {{ country }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ country }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ country }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:country_detail" country.pk %}>Cancel</a>
+
+{% endblock %}

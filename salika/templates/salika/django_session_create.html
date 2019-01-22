@@ -1,0 +1,16 @@
+{% extends "salika/django_session_base.html" %}
+
+{% block title %}
+    Create DjangoSession
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:django_session_list" %}>DjangoSession</a></h1>
+<h2>Create DjangoSession</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:django_session_list" %}>Cancel</a>
+{% endblock %}

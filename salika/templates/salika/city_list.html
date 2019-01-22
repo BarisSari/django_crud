@@ -1,0 +1,20 @@
+{% extends "salika/city_base.html" %}
+
+{% block title %}
+    Citys
+{% endblock %}
+
+{% block content %}
+    <h1>Citys</h1>
+    <h2><a href={% url "salika:city_create" %}>Create new City</a></h2>
+    <ul>
+    {% for city in city_list %}
+        <li><a href={% url "salika:city_detail" city.pk %}>{{ city }}</a> | <a href={% url "salika:city_update" city.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:city_delete" city.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ city }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No Citys yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

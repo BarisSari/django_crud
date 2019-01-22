@@ -1,0 +1,19 @@
+{% extends "salika/payment_base.html" %}
+
+{% block title %}
+    Update {{ payment }}
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:payment_list" %}>Payment</a></h1>
+<h2>Update {{ payment }}</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+<a href={% url "salika:payment_detail" payment.pk %}>Cancel</a>
+<form style="display:inline;" action={% url "salika:payment_delete" payment.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ payment }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

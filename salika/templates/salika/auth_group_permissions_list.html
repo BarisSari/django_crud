@@ -1,0 +1,20 @@
+{% extends "salika/auth_group_permissions_base.html" %}
+
+{% block title %}
+    AuthGroupPermissionss
+{% endblock %}
+
+{% block content %}
+    <h1>AuthGroupPermissionss</h1>
+    <h2><a href={% url "salika:auth_group_permissions_create" %}>Create new AuthGroupPermissions</a></h2>
+    <ul>
+    {% for auth_group_permissions in auth_group_permissions_list %}
+        <li><a href={% url "salika:auth_group_permissions_detail" auth_group_permissions.pk %}>{{ auth_group_permissions }}</a> | <a href={% url "salika:auth_group_permissions_update" auth_group_permissions.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:auth_group_permissions_delete" auth_group_permissions.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ auth_group_permissions }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No AuthGroupPermissionss yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

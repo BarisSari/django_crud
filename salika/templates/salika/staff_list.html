@@ -1,0 +1,20 @@
+{% extends "salika/staff_base.html" %}
+
+{% block title %}
+    Staffs
+{% endblock %}
+
+{% block content %}
+    <h1>Staffs</h1>
+    <h2><a href={% url "salika:staff_create" %}>Create new Staff</a></h2>
+    <ul>
+    {% for staff in staff_list %}
+        <li><a href={% url "salika:staff_detail" staff.pk %}>{{ staff }}</a> | <a href={% url "salika:staff_update" staff.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:staff_delete" staff.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ staff }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No Staffs yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

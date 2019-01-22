@@ -1,0 +1,16 @@
+{% extends "salika/film_category_base.html" %}
+
+{% block title %}
+    Create FilmCategory
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:film_category_list" %}>FilmCategory</a></h1>
+<h2>Create FilmCategory</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:film_category_list" %}>Cancel</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "salika/auth_permission_base.html" %}
+
+{% block title %}
+    {{ auth_permission }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:auth_permission_list" %}>AuthPermission</a></h1>
+    <h2>{{ auth_permission }} | <a href={% url "salika:auth_permission_update" auth_permission.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:auth_permission_delete" auth_permission.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ auth_permission }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

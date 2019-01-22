@@ -1,0 +1,20 @@
+{% extends "salika/payment_base.html" %}
+
+{% block title %}
+    Payments
+{% endblock %}
+
+{% block content %}
+    <h1>Payments</h1>
+    <h2><a href={% url "salika:payment_create" %}>Create new Payment</a></h2>
+    <ul>
+    {% for payment in payment_list %}
+        <li><a href={% url "salika:payment_detail" payment.pk %}>{{ payment }}</a> | <a href={% url "salika:payment_update" payment.pk %}>Update</a> | <form style="display:inline;" action={% url "salika:payment_delete" payment.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ payment }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form></li>
+    {% empty %}
+        <li>No Payments yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

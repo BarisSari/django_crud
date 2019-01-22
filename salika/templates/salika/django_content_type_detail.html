@@ -1,0 +1,14 @@
+{% extends "salika/django_content_type_base.html" %}
+
+{% block title %}
+    {{ django_content_type }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:django_content_type_list" %}>DjangoContentType</a></h1>
+    <h2>{{ django_content_type }} | <a href={% url "salika:django_content_type_update" django_content_type.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:django_content_type_delete" django_content_type.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ django_content_type }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

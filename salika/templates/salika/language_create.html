@@ -1,0 +1,16 @@
+{% extends "salika/language_base.html" %}
+
+{% block title %}
+    Create Language
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:language_list" %}>Language</a></h1>
+<h2>Create Language</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:language_list" %}>Cancel</a>
+{% endblock %}

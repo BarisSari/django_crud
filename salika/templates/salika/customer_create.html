@@ -1,0 +1,16 @@
+{% extends "salika/customer_base.html" %}
+
+{% block title %}
+    Create Customer
+{% endblock %}
+
+{% block content %}
+<h1><a href={% url "salika:customer_list" %}>Customer</a></h1>
+<h2>Create Customer</h2>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+<a href={% url "salika:customer_list" %}>Cancel</a>
+{% endblock %}

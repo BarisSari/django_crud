@@ -1,0 +1,14 @@
+{% extends "salika/actor_base.html" %}
+
+{% block title %}
+    {{ actor }}
+{% endblock %}
+
+{% block content %}
+    <h1><a href={% url "salika:actor_list" %}>Actor</a></h1>
+    <h2>{{ actor }} | <a href={% url "salika:actor_update" actor.pk %}>Update</a> | 
+    <form style="display:inline;" action={% url "salika:actor_delete" actor.pk %} method="post" onsubmit="return confirm('Are you sure you want to delete {{ actor }}?')">{% csrf_token %}
+    <input type="submit" value="Delete" />
+    </form>
+    </h2>
+{% endblock %}

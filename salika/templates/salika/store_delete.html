@@ -1,0 +1,17 @@
+{% extends "salika/store_base.html" %}
+
+{% block title %}
+    Delete {{ store }}
+{% endblock %}
+
+{% block content %}
+<h1>Delete {{ store }}</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{ store }}?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+<a href={% url "salika:store_detail" store.pk %}>Cancel</a>
+
+{% endblock %}
