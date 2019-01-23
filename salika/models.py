@@ -29,13 +29,13 @@ class Address(models.Model):
     address = models.CharField(max_length=50)
     address2 = models.CharField(max_length=50, blank=True, null=True)
     district = models.CharField(max_length=20)
-    city = models.ForeignKey('City', models.DO_NOTHING)
+    city = models.ForeignKey('City', on_delete=models.CASCADE)
     postal_code = models.CharField(max_length=10, blank=True, null=True)
     phone = models.CharField(max_length=20)
     last_update = models.DateTimeField()
 
     def __str__(self):
-        return '%s' % self.address
+        return '%s, %s' % (self.address, self.district)
 
     class Meta:
         managed = False
@@ -54,8 +54,8 @@ class AuthGroup(models.Model):
 
 
 class AuthGroupPermissions(models.Model):
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, on_delete=models.CASCADE)
+    permission = models.ForeignKey('AuthPermission', on_delete=models.CASCADE)
 
     class Meta:
         managed = False
@@ -65,7 +65,7 @@ class AuthGroupPermissions(models.Model):
 
 class AuthPermission(models.Model):
     name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    content_type = models.ForeignKey('DjangoContentType', on_delete=models.CASCADE)
     codename = models.CharField(max_length=100)
 
     class Meta:
@@ -86,14 +86,17 @@ class AuthUser(models.Model):
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
 
+    def __str__(self):
+        return '%s' % self.username
+
     class Meta:
         managed = False
         db_table = 'auth_user'
 
 
 class AuthUserGroups(models.Model):
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, on_delete=models.CASCADE)
+    group = models.ForeignKey(AuthGroup, on_delete=models.CASCADE)
 
     class Meta:
         managed = False
@@ -102,8 +105,8 @@ class AuthUserGroups(models.Model):
 
 
 class AuthUserUserPermissions(models.Model):
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, on_delete=models.CASCADE)
+    permission = models.ForeignKey(AuthPermission, on_delete=models.CASCADE)
 
     class Meta:
         managed = False
@@ -127,7 +130,7 @@ class Category(models.Model):
 class City(models.Model):
     city_id = models.AutoField(primary_key=True)
     city = models.CharField(max_length=50)
-    country = models.ForeignKey('Country', models.DO_NOTHING)
+    country = models.ForeignKey('Country', on_delete=models.CASCADE)
     last_update = models.DateTimeField()
 
     def __str__(self):
@@ -157,7 +160,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     email = models.CharField(max_length=50, blank=True, null=True)
-    address = models.ForeignKey(Address, models.DO_NOTHING)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     activebool = models.BooleanField()
     create_date = models.DateField()
     last_update = models.DateTimeField(blank=True, null=True)
@@ -177,9 +180,9 @@ class DjangoAdminLog(models.Model):
     object_repr = models.CharField(max_length=200)
     action_flag = models.SmallIntegerField()
     change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING,
+    content_type = models.ForeignKey('DjangoContentType', on_delete=models.CASCADE,
                                      blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, on_delete=models.CASCADE)
 
     class Meta:
         managed = False
@@ -221,7 +224,7 @@ class Film(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     release_year = models.IntegerField(blank=True, null=True)
-    language = models.ForeignKey('Language', models.DO_NOTHING)
+    language = models.ForeignKey('Language', on_delete=models.CASCADE)
     rental_duration = models.SmallIntegerField()
     rental_rate = models.DecimalField(max_digits=4, decimal_places=2)
     length = models.SmallIntegerField(blank=True, null=True)
@@ -230,7 +233,7 @@ class Film(models.Model):
                               null=True)  # This field type is a guess.
     last_update = models.DateTimeField()
     special_features = models.TextField(blank=True,
-                                        null=True)  # This field type is a guess.
+                                        null=True)
     fulltext = models.TextField()  # This field type is a guess.
 
     def __str__(self):
@@ -242,9 +245,10 @@ class Film(models.Model):
 
 
 class FilmActor(models.Model):
-    actor_id = models.OneToOneField(Actor, on_delete=models.CASCADE,
+    actor_id = models.ForeignKey(Actor, on_delete=models.CASCADE,
                                  db_column='actor_id')
-    film_id = models.ForeignKey(Film, models.DO_NOTHING, db_column='film_id')
+    film_id = models.OneToOneField(Film, on_delete=models.CASCADE,
+                                   db_column='film_id', primary_key=True)
     last_update = models.DateTimeField()
 
     class Meta:
@@ -255,8 +259,8 @@ class FilmActor(models.Model):
 
 class FilmCategory(models.Model):
     film_id = models.OneToOneField(Film, on_delete=models.CASCADE,
-                                   db_column='film_id')
-    category_id = models.ForeignKey(Category, models.DO_NOTHING,
+                                   db_column='film_id', primary_key=True)
+    category_id = models.ForeignKey(Category, on_delete=models.CASCADE,
                                     db_column='category_id')
     last_update = models.DateTimeField()
 
@@ -268,12 +272,12 @@ class FilmCategory(models.Model):
 
 class Inventory(models.Model):
     inventory_id = models.AutoField(primary_key=True)
-    film = models.ForeignKey(Film, models.DO_NOTHING)
+    film = models.ForeignKey(Film, on_delete=models.CASCADE)
     store_id = models.SmallIntegerField()
     last_update = models.DateTimeField()
 
     def __str__(self):
-        return '%s' % self.film.title
+        return '%s from Store#' % self.film.title + ' ' + str(self.store_id)
 
     class Meta:
         managed = False
@@ -295,9 +299,9 @@ class Language(models.Model):
 
 class Payment(models.Model):
     payment_id = models.AutoField(primary_key=True)
-    customer = models.ForeignKey(Customer, models.DO_NOTHING)
-    staff = models.ForeignKey('Staff', models.DO_NOTHING)
-    rental = models.ForeignKey('Rental', models.DO_NOTHING)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    staff = models.ForeignKey('Staff', on_delete=models.CASCADE)
+    rental = models.ForeignKey('Rental', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     payment_date = models.DateTimeField()
 
@@ -309,10 +313,10 @@ class Payment(models.Model):
 class Rental(models.Model):
     rental_id = models.AutoField(primary_key=True)
     rental_date = models.DateTimeField()
-    inventory = models.ForeignKey(Inventory, models.DO_NOTHING)
-    customer = models.ForeignKey(Customer, models.DO_NOTHING)
+    inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     return_date = models.DateTimeField(blank=True, null=True)
-    staff = models.ForeignKey('Staff', models.DO_NOTHING)
+    staff = models.ForeignKey('Staff', on_delete=models.CASCADE)
     last_update = models.DateTimeField()
 
     class Meta:
@@ -325,7 +329,7 @@ class Staff(models.Model):
     staff_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
-    address = models.ForeignKey(Address, models.DO_NOTHING)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     email = models.CharField(max_length=50, blank=True, null=True)
     store_id = models.SmallIntegerField()
     active = models.BooleanField()
@@ -337,15 +341,6 @@ class Staff(models.Model):
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
 
-    # def image_img(self):
-    #     if self.picture:
-    #         return u'<img src="%s" />' % self.picture
-    #     else:
-    #         return '(Sin imagen)'
-    #
-    # image_img.short_description = 'Thumb'
-    # image_img.allow_tags = True
-
     class Meta:
         managed = False
         db_table = 'staff'
@@ -354,7 +349,7 @@ class Staff(models.Model):
 class Store(models.Model):
     store_id = models.AutoField(primary_key=True)
     manager_staff = models.OneToOneField(Staff, on_delete=models.CASCADE)
-    address = models.ForeignKey(Address, models.DO_NOTHING)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     last_update = models.DateTimeField()
 
     class Meta:

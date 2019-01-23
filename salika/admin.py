@@ -1,14 +1,16 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+
 from .models import Actor, Address, AuthGroup, AuthGroupPermissions, \
     AuthPermission, AuthUser, AuthUserGroups, AuthUserUserPermissions, \
     Category, City, Country, Customer, DjangoAdminLog, DjangoContentType, \
-    DjangoMigrations, DjangoSession, Film, FilmActor, FilmCategory, Inventory, \
+    DjangoMigrations, DjangoSession, Film, FilmActor, FilmCategory, Inventory,\
     Language, Payment, Rental, Staff, Store
 from django_baker.admin import ExtendedModelAdminMixin
 
 
 class ActorAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
-    extra_list_display = []
+    extra_list_display = ["image_img"]
     extra_list_filter = ['first_name', 'last_name']
     extra_search_fields = []
     list_editable = []
@@ -19,7 +21,14 @@ class ActorAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
     radio_fields = {}
     prepopulated_fields = {}
     formfield_overrides = {}
-    readonly_fields = []
+    readonly_fields = ["image_img"]
+
+    def image_img(self, obj):
+        return mark_safe(u'<img src=\"https://m.media-amazon.com/images/M/MV5'
+                         u'BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_U'
+                         u'X214_CR0,0,214,317_AL_.jpg\" />')
+
+    image_img.short_description = 'Thumb'
 
 
 class AddressAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):

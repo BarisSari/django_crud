@@ -849,7 +849,7 @@ class FilmForm(forms.ModelForm):
 class FilmActorForm(forms.ModelForm):
     class Meta:
         model = FilmActor
-        fields = ['actor_id', 'film_id', 'last_update']
+        fields = ['film_id', 'actor_id', 'last_update']
         exclude = []
         widgets = None
         localized_fields = None
@@ -867,11 +867,11 @@ class FilmActorForm(forms.ModelForm):
         return super(FilmActorForm, self).full_clean()
 
     def clean_actor(self):
-        actor = self.cleaned_data.get("actor", None)
+        actor = self.cleaned_data.get("actor_id", None)
         return actor
 
     def clean_film(self):
-        film = self.cleaned_data.get("film", None)
+        film = self.cleaned_data.get("film_id", None)
         return film
 
     def clean_last_update(self):
