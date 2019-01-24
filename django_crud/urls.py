@@ -18,6 +18,12 @@ from django.urls import path
 from django.urls import include
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
-    # path('salika/', include('salika.urls'))
+    path('salika/', include('salika.urls'))
 ]
+
+admin.site.site_header = "Django CRUD"
+admin.site.site_title = "Django CRUD Admin Portal"
+admin.site.index_title = "Welcome to Django CRUD Portal"

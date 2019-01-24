@@ -8,6 +8,7 @@
 # Feel free to rename the models, but don't rename db_table values or field
 # names.
 from django.db import models
+# from haystack import indexes
 
 
 class Actor(models.Model):
@@ -40,6 +41,7 @@ class Address(models.Model):
     class Meta:
         managed = False
         db_table = 'address'
+        verbose_name_plural = 'Addresses'
 
 
 class AuthGroup(models.Model):
@@ -125,6 +127,7 @@ class Category(models.Model):
     class Meta:
         managed = False
         db_table = 'category'
+        verbose_name_plural = "Categories"
 
 
 class City(models.Model):
@@ -139,6 +142,7 @@ class City(models.Model):
     class Meta:
         managed = False
         db_table = 'city'
+        verbose_name_plural = "Cities"
 
 
 class Country(models.Model):
@@ -152,6 +156,7 @@ class Country(models.Model):
     class Meta:
         managed = False
         db_table = 'country'
+        verbose_name_plural = "Countries"
 
 
 class Customer(models.Model):
@@ -207,6 +212,7 @@ class DjangoMigrations(models.Model):
     class Meta:
         managed = False
         db_table = 'django_migrations'
+        verbose_name_plural = 'Django migrations'
 
 
 class DjangoSession(models.Model):
@@ -268,6 +274,7 @@ class FilmCategory(models.Model):
         managed = False
         db_table = 'film_category'
         unique_together = (('film_id', 'category_id'),)
+        verbose_name_plural = "Film categories"
 
 
 class Inventory(models.Model):
@@ -282,6 +289,7 @@ class Inventory(models.Model):
     class Meta:
         managed = False
         db_table = 'inventory'
+        verbose_name_plural = 'Inventories'
 
 
 class Language(models.Model):

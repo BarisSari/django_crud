@@ -10,10 +10,13 @@ from django_baker.admin import ExtendedModelAdminMixin
 
 
 class ActorAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
-    extra_list_display = ["image_img"]
+    date_hierarchy = 'last_update'
+
+    list_display = ['actor_id', 'first_name', 'last_name', 'last_update',
+                    'image_img']
     extra_list_filter = ['first_name', 'last_name']
     extra_search_fields = []
-    list_editable = []
+    list_editable = ['first_name', 'last_name']
     raw_id_fields = []
     inlines = []
     filter_vertical = []
@@ -21,7 +24,7 @@ class ActorAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
     radio_fields = {}
     prepopulated_fields = {}
     formfield_overrides = {}
-    readonly_fields = ["image_img"]
+    readonly_fields = []
 
     def image_img(self, obj):
         return mark_safe(u'<img src=\"https://m.media-amazon.com/images/M/MV5'
@@ -347,6 +350,8 @@ class PaymentAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
 
 
 class RentalAdmin(ExtendedModelAdminMixin, admin.ModelAdmin):
+    # date_hierarchy = 'rental_date'
+
     extra_list_display = []
     extra_list_filter = []
     extra_search_fields = []
